@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'encuestas/style.css' %}">
+
+<h2>Modelo de Encuestas Django</h2>	
+<br><br><br><br><br>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+		<li>
+		    <h3><a href="{% url 'encuestas:detail' question.id %}">{{ question.question_text }}</a></h3>
+		</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No encuestas are available</p>
+{% endif %}
